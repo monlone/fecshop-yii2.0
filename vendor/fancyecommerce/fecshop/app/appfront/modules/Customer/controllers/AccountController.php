@@ -55,7 +55,10 @@ class AccountController extends AppfrontController
 				return Yii::$service->customer->loginSuccessRedirect('customer/account');
 			}
 		}
-		$data = $this->getBlock()->getLastData($param);
+		$data = [];
+        if ($param){
+            $data = $this->getBlock()->getLastData($param);
+        }
 		return $this->render($this->action->id,$data);
 	}
 	/**
